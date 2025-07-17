@@ -24,11 +24,27 @@ The services are containerized using Docker, orchestrated with Kubernetes, and t
    git clone https://github.com/SOA915-NAA-GROUP9/online-bookstore-microservices.git
    cd online-bookstore-microservices
 
-2. **Run Locally with Docker Compose**:
+2. **Install Dependencies**:
+   ```bash
+   cd user-service/src && npm install
+   cd ../../product-service/src && npm install
+   cd ../../tests && npm install
+
+3. **Run Locally with Docker Compose**:
    ```bash
     docker-compose up --build
 
-3. **Set Up Kubernetes Cluster**:
+4. **Test APIs**:
+    User Service: http://localhost:3000/users
+    Product Service: http://localhost:3001/books
+    Use Postman or curl (see docs/api-contracts.md for examples).
+
+5. **Run Integration Tests**:
+    ```bash
+    cd tests
+    npm test
+
+6. **Set Up Kubernetes Cluster**:
     a. Start Minikube:
     ```bash
     minikube start
@@ -37,7 +53,7 @@ The services are containerized using Docker, orchestrated with Kubernetes, and t
     ```bash
     kubectl apply -f kubernetes/
 
-4. **Access Services**:
+7. **Access Services**:
 - User Service: http://localhost:3000/users
 - Product Service: http://localhost:3001/books
 - Order Service: http://localhost:3002/orders
@@ -64,14 +80,37 @@ See docs/architecture.md for the architecture diagram and service interactions.
 - Nicholas Nwanua Ilechie
 - Nirajbhai Ranchhodbhai Limbasiya
 
-## Development Workflow
-- Use branches (e.g., user-service, product-service) for feature development.
-- Submit pull requests for code reviews
-- Run tests locally before pushing changes.
+## Git Workflow
+
+Branches:
+
+- user-service: Development of User Service (Helly, Jiyad).
+- product-service: Development of Product Service (Nicholas, Niraj).
+- order-service: Development of Order Service (Helly, Jiyad).
+- notification-service: Development of Notification Service (Nicholas, Niraj).
+- main: Stable branch with merged, production-ready code.
+
+Workflow:
+- Checkout the relevant branch:
+```bash
+    git checkout user-service
+```
+- Make changes and commit:
+    ```bash
+    git add .
+    git commit -m "Descriptive commit message"
+    git push origin user-service
+    ```
+- Create a pull request on GitHub to merge into main.
+- Nicholas Ilechie reviews the PR then merge after approval and resolve any conflicts.
+- Regularly sync with main:
+    ```bash
+    git pull origin main
+
+
 
 ## Next Steps
-- Implement User and Product Services (Week 6-7).
-- Dockerize services and test with Docker Compose.
+- Implement Order and Notification Services (Week 9).
 - Deploy to Kubernetes (Week 9-10).
 - Set up CI/CD and monitoring (Week 11).
 - Prepare final presentation (Week 12).
