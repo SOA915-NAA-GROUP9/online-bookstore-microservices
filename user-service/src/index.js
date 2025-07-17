@@ -18,6 +18,11 @@ app.post('/users/register', (req, res) => {
   res.status(201).json({ userId: user.id, message: 'User created' });
 });
 
+// GET /users
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
 // GET /users/:id
 app.get('/users/:id', (req, res) => {
   const user = users.find(u => u.id === req.params.id);
