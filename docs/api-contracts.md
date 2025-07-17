@@ -9,6 +9,13 @@
     curl -X POST http://localhost:3000/users/register -H "Content-Type: application/json" -d '{"username":"john_doe","email":"john@example.com"}'
     ```
     Response: `{ "userId": "1", "message": "User created" }`
+- **GET /users**: List all users.
+  - Response: `[{ "id": "string", "username": "string", "email": "string" }]`
+  - Example:
+    ```bash
+    curl http://localhost:3000/users
+    ```
+    Response: `[{ "id": "1", "username": "john_doe", "email": "john@example.com" }, ...]`
 - **GET /users/{id}**: Get user details.
   - Response: `{ "id": "string", "username": "string", "email": "string" }`
   - Example:
