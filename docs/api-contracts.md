@@ -1,45 +1,34 @@
 # API Contracts
 
 ## User Service
-- `POST /users/register`: Register a new user.
-  - Request: `{ "username": "string", "password": "string", "email": "string" }`
+- **POST /users/register**: Register a new user.
+  - Request: `{ "username": "string", "email": "string" }`
   - Response: `{ "userId": "string", "message": "User created" }`
-- `POST /users/login`: Authenticate a user.
-  - Request: `{ "username": "string", "password": "string" }`
-  - Response: `{ "token": "string" }`
-- `GET /users/{id}`: Get user details.
+  - Example:
+    ```bash
+    curl -X POST http://localhost:3000/users/register -H "Content-Type: application/json" -d '{"username":"john_doe","email":"john@example.com"}'
+    ```
+    Response: `{ "userId": "1", "message": "User created" }`
+- **GET /users/{id}**: Get user details.
   - Response: `{ "id": "string", "username": "string", "email": "string" }`
-- `PUT /users/{id}`: Update user profile.
-  - Request: `{ "email": "string", "name": "string" }`
-  - Response: `{ "message": "User updated" }`
+  - Example:
+    ```bash
+    curl http://localhost:3000/users/1
+    ```
+    Response: `{ "id": "1", "username": "john_doe", "email": "john@example.com" }`
 
 ## Product Service
-- `GET /books`: List all books.
-  - Query: `?genre=string&author=string`
+- **GET /books**: List all books.
   - Response: `[{ "id": "string", "title": "string", "author": "string", "price": number }]`
-- `GET /books/{id}`: Get book details.
+  - Example:
+    ```bash
+    curl http://localhost:3001/books
+    ```
+    Response: `[{ "id": "1", "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "price": 10.99 }, ...]`
+- **GET /books/{id}**: Get book details.
   - Response: `{ "id": "string", "title": "string", "author": "string", "price": number }`
-- `POST /books`: Add a new book (admin-only).
-  - Request: `{ "title": "string", "author": "string", "price": number }`
-  - Response: `{ "id": "string", "message": "Book added" }`
-- `PUT /books/{id}`: Update book details (admin-only).
-  - Request: `{ "title": "string", "author": "string", "price": number }`
-  - Response: `{ "message": "Book updated" }`
-
-## Order Service
-- `POST /orders`: Create a new order.
-  - Request: `{ "userId": "string", "bookIds": ["string"] }`
-  - Response: `{ "orderId": "string", "message": "Order created" }`
-- `GET /orders/{id}`: Get order details.
-  - Response: `{ "orderId": "string", "userId": "string", "books": ["string"], "status": "string" }`
-- `PUT /orders/{id}/status`: Update order status.
-  - Request: `{ "status": "string" }`
-  - Response: `{ "message": "Order status updated" }`
-
-## Notification Service
-- `POST /notifications/email`: Send email notification.
-  - Request: `{ "recipient": "string", "message": "string" }`
-  - Response: `{ "message": "Email sent" }`
-- `POST /notifications/sms`: Send SMS notification.
-  - Request: `{ "phone": "string", "message": "string" }`
-  - Response: `{ "message": "SMS sent" }`
+  - Example:
+    ```bash
+    curl http://localhost:3001/books/1
+    ```
+    Response: `{ "id": "1", "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "price": 10.99 }`

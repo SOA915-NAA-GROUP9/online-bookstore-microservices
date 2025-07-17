@@ -1,0 +1,12 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "description": "Product Service for Online Bookstore",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
