@@ -4,7 +4,7 @@ describe('User and Product Service Integration', () => {
   const userServiceUrl = 'http://localhost:3000';
   const productServiceUrl = 'http://localhost:3001';
 
-  test('Register user and fetch book', async () => {
+  test('Register user, fetch all users, and fetch books', async () => {
     // Register a user
     const userResponse = await axios.post(`${userServiceUrl}/users/register`, {
       username: 'test_user',
@@ -12,6 +12,11 @@ describe('User and Product Service Integration', () => {
     });
     expect(userResponse.status).toBe(201);
     expect(userResponse.data.userId).toBeDefined();
+
+    // Fetch all users
+    const usersResponse = await axios.get(`${userServiceUrl}/users`);
+    expect(usersResponse.status).toBe(200);
+    expect(usersResponse.data.length).toBeGreaterThan(0);
 
     // Fetch user details
     const userId = userResponse.data.userId;
