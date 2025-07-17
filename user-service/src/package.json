@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js"
   },
+  "author": " Nicholas Nwanua Ilechie, Helly Rajeshbhai Patel, Jiyad Mohammed Arif Shaikh, Nirajbhai Ranchhodbhai Limbasiya",
   "dependencies": {
     "express": "^4.17.1"
   }
