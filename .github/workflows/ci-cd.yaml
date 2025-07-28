@@ -45,6 +45,10 @@ jobs:
         cd tests
         npm install
 
+    - name: Start services for integration and E2E tests
+      run: |
+        docker compose up -d
+
     - name: Run integration and E2E tests
       run: |
         cd tests
@@ -56,11 +60,6 @@ jobs:
         docker build -t user-service:latest ./user-service
         docker build -t product-service:latest ./product-service
 
-    - name: Deploy to Minikube
-      if: github.ref == 'refs/heads/main'
+    - name: Stop services
       run: |
-        minikube start
-        minikube image load user-service:latest
-        minikube image load product-service:latest
-        kubectl apply -f kubernetes/ -n bookstore
-        kubectl get pods -n bookstore
+        docker compose down
