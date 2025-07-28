@@ -1,5 +1,8 @@
-// Extracted logic for unit testing
-let users = [{ id: '1', username: 'john_doe', email: 'john@example.com' }];
+let users = [];
+
+const resetUsers = () => {
+  users = [{ id: '1', username: 'john_doe', email: 'john@example.com' }];
+};
 
 const registerUser = (username, email) => {
   if (!username || !email) {
@@ -20,4 +23,4 @@ const getUserById = (id) => {
   return user;
 };
 
-module.exports = { registerUser, getAllUsers, getUserById };
+module.exports = { registerUser, getAllUsers, getUserById, resetUsers };

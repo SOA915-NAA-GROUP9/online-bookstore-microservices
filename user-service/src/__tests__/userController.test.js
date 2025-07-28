@@ -1,11 +1,8 @@
-const { registerUser, getAllUsers, getUserById } = require('../userController');
+const { registerUser, getAllUsers, getUserById, resetUsers } = require('../userController');
 
 describe('User Controller Unit Tests', () => {
   beforeEach(() => {
-    // Reset users array
-    jest.resetModules();
-    const mod = require('../userController');
-    mod.registerUser('john_doe', 'john@example.com'); // Reset initial user
+    resetUsers(); // Reset users array before each test
   });
 
   test('should register a new user', () => {
