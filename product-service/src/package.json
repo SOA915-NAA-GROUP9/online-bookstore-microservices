@@ -4,10 +4,14 @@
   "description": "Product Service for Online Bookstore",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest"
   },
-  "author": " Nicholas Nwanua Ilechie, Helly Rajeshbhai Patel, Jiyad Mohammed Arif Shaikh, Nirajbhai Ranchhodbhai Limbasiya",
+  "author": "Helly Rajeshbhai Patel, Jiyad Mohammed Arif Shaikh, Nicholas Nwanua Ilechie, Nirajbhai Ranchhodbhai Limbasiya",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
