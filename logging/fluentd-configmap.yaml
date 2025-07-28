@@ -12,14 +12,12 @@ data:
       tag kubernetes.*
       read_from_head true
       <parse>
-        @type json
+        @type none  # Use none to handle raw logs
       </parse>
     </source>
-
-    <filter kubernetes.**>
-      @type kubernetes_metadata
-    </filter>
-
     <match kubernetes.**>
       @type stdout
+      <format>
+        @type json  # Output logs as JSON for clarity
+      </format>
     </match>
