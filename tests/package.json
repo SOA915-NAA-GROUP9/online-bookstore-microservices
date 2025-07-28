@@ -1,12 +1,16 @@
 {
-  "name": "tests",
+  "name": "bookstore-tests",
   "version": "1.0.0",
-  "description": "Integration tests for Online Bookstore",
+  "description": "Tests for Online Bookstore Microservices",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:integration": "jest integration",
+    "test:e2e": "jest e2e"
   },
   "dependencies": {
-    "axios": "^1.4.0",
-    "jest": "^29.5.0"
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
