@@ -1,0 +1,66 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - user-service
+      - product-service
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies for User Service
+      run: |
+        cd user-service/src
+        npm install
+
+    - name: Run User Service unit tests
+      run: |
+        cd user-service/src
+        npm test
+
+    - name: Install dependencies for Product Service
+      run: |
+        cd product-service/src
+        npm install
+
+    - name: Run Product Service unit tests
+      run: |
+        cd product-service/src
+        npm test
+
+    - name: Install dependencies for tests
+      run: |
+        cd tests
+        npm install
+
+    - name: Run integration and E2E tests
+      run: |
+        cd tests
+        npm run test:integration
+        npm run test:e2e
+
+    - name: Build Docker images
+      run: |
+        docker build -t user-service:latest ./user-service
+        docker build -t product-service:latest ./product-service
+
+    - name: Deploy to Minikube
+      if: github.ref == 'refs/heads/main'
+      run: |
+        minikube start
+        minikube image load user-service:latest
+        minikube image load product-service:latest
+        kubectl apply -f kubernetes/ -n bookstore
+        kubectl get pods -n bookstore
