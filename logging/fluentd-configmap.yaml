@@ -7,17 +7,17 @@ data:
   fluent.conf: |
     <source>
       @type tail
-      path /var/log/containers/*.log
+      path /var/lib/docker/containers/*/*.log  # Minikube Docker log path
       pos_file /fluentd/log/fluentd.pos
       tag kubernetes.*
       read_from_head true
       <parse>
-        @type none  # Use none to handle raw logs
+        @type none
       </parse>
     </source>
     <match kubernetes.**>
       @type stdout
       <format>
-        @type json  # Output logs as JSON for clarity
+        @type json
       </format>
     </match>
