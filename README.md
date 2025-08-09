@@ -2,7 +2,7 @@
 
 **Course**: Service-Oriented Architecture (SOA915-NAA-GROUP9)  
 **Team**: Nicholas Nwanua Ilechie (Leader), Helly Rajeshbhai Patel, Jiyad Mohammed Arif Shaikh, Nirajbhai Ranchhodbhai Limbasiya  
-**Date**: November 2025  
+**Date**: August 2025  
 **Repository**: [https://github.com/SOA915-NAA-GROUP9/online-bookstore-microservices](https://github.com/SOA915-NAA-GROUP9/online-bookstore-microservices)
 
 [![CI/CD Pipeline](https://github.com/SOA915-NAA-GROUP9/online-bookstore-microservices/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/SOA915-NAA-GROUP9/online-bookstore-microservices/actions/workflows/ci-cd.yaml)
